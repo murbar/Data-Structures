@@ -85,7 +85,8 @@ class DoublyLinkedList:
         pass
 
     def delete(self, node):
-        pass
+        node.delete()
+        self.length -= 1
 
     def get_max(self):
         if not self.head and not self.tail:
