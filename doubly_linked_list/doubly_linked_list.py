@@ -88,4 +88,15 @@ class DoublyLinkedList:
         pass
 
     def get_max(self):
-        pass
+        if not self.head and not self.tail:
+            return None
+
+        current = self.head
+        max = current.value
+        while current.next:
+            next_value = current.next.value
+            if next_value > max:
+                max = current_value
+            current = current.next
+
+        return max
