@@ -32,7 +32,10 @@ class BinarySearchTree:
                 return self.right.contains(target)
 
     def get_max(self):
-        pass
+        if self.right:
+            self.right.get_max()
+        else:
+            return self.value
 
     def for_each(self, cb):
         # left -> root -> right
