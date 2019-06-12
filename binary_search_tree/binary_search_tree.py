@@ -35,4 +35,11 @@ class BinarySearchTree:
         pass
 
     def for_each(self, cb):
-        pass
+        # left -> root -> right
+        if self.left:
+            self.left.for_each(cb)
+
+        cb(self.value)
+
+        if self.right:
+            self.right.for_each(cb)
