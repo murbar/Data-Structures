@@ -1,11 +1,11 @@
 class BinarySearchTree:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
+    def __init__(self, data=None, left=None, right=None):
+        self.data = data
+        self.left = left
+        self.right = right
 
     def insert(self, value):
-        if value <= self.value:
+        if value <= self.data:
             if self.left == None:
                 self.left = BinarySearchTree(value)
             else:
@@ -16,33 +16,40 @@ class BinarySearchTree:
             else:
                 self.right.insert(value)
 
-    def contains(self, target):
-        if self.value == target:
+    def contains(self, value):
+        if self.data == value:
             return True
-        elif target < self.value:
+        elif value < self.data:
             if self.left == None:
                 return False
             else:
-                return self.left.contains(target)
+                return self.left.contains(value)
 
         else:
             if self.right == None:
                 return False
             else:
-                return self.right.contains(target)
+                return self.right.contains(value)
 
-    def get_max(self):
-        if self.right:
-            return self.right.get_max()
-
-        return self.value
-
-    def for_each(self, cb):
+    def print_in_order(self):
         # left -> root -> right
         if self.left:
-            self.left.for_each(cb)
+            self.left.print_in_order()
 
-        cb(self.value)
+        print(self.data)
 
         if self.right:
-            self.right.for_each(cb)
+            self.right.print_in_order()
+
+
+bst = BinarySearchTree(5)
+
+bst.insert(56)
+bst.insert(34)
+bst.insert(3)
+bst.insert(87)
+bst.insert(20)
+
+print(bst.contains(3))
+
+bst.print_in_order()
